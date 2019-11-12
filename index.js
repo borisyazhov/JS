@@ -43,7 +43,7 @@ function connect({
     host = 'localhost',
     port = 12345,
     user = 'guest'} = {}) {
-        Console.LOG('user:', user, 'port:', port, 'host:', host);
+        console.log('user:', user, 'port:', port, 'host:', host);
     }
     connect({ port: 1111});
 
@@ -65,6 +65,67 @@ function connect({
         mouse: 'squeak'
     };
 
-    const {duck, ...otherAnimals } = dict;
+    const {duck, ...otherAnimals } = dic;
 
     console.log(otherAnimals);
+
+// Деструктуризация массивов
+
+const dic1 = {
+    duck: 'quack',
+    dog: 'wuff',
+    mouse: 'squeak',
+    hamster: 'squeak'
+};
+
+const res2 = Object.entries(dic1).filter(([, value]) => value === 'squeak').map(([key]) => key);
+
+console.log(res2);
+
+const shape = {
+    type: 'segement',
+    coordinates: {
+        start: [10, 15],
+        end: [17, 15]
+    }
+};
+
+const {coordinates: {start: [startX, startY], end: [endX, endY]}} = shape;
+console.log(startX, startY, endX, endY);
+
+// Шаблонные строки 
+
+
+const items = ['tea', 'coffee'];
+
+const templateHtml =  `
+<ul>
+    <li>${items[0]}</li>
+    <li>${items[1]}</li>
+</ul>
+`; 
+console.log(templateHtml);   
+
+// Objects
+
+const prefix = '_blah_';
+
+const data = {
+    [prefix + 'name']: 'Bob',
+    [prefix + 'age']: 23
+};
+console.log(data);
+
+const defaults = {
+    host: 'localhost',
+    dbName: 'blog',
+    user: 'admin'
+};
+
+const opts = {
+    user: 'John',
+    password: 'utopia'
+};
+
+const res3 = Object.assign({}, defaults, opts);
+console.log(res3);
